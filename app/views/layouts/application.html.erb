@@ -10,6 +10,19 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <!-- ナビゲーションバー -->
+    <%= render 'layouts/flash_messages' %>
+    <%= render 'layouts/navbar' %>
+
+    <main>
+
+      <%= yield %>
+    </main>
+
+    <!-- フッター -->
+    <footer>
+
+    </footer>
   </body>
 </html>
