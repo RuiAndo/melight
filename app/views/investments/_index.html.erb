@@ -1,0 +1,72 @@
+<div class="investment-contents">
+  <div class="container bg-light mt-3">
+    <div class="row">
+
+      <!-- 投資銘柄入力エリア -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h3 class="card-title ">投資</h3>
+            <p class="card-category"> 投資銘柄を登録してシミュレーションしよう</p>
+          </div>
+          <div class="card-body">
+            <%= form_for investment, url: investments_path, html: {class: 'form js-form_investment'} do |f| %>
+            <div class="form-group pr-3">
+              <%= f.label :item, "投資銘柄" %>
+              <%= f.text_field :item, class: "form-control form_textfield js-form_text-field_investment form-item" %>
+            </div>
+            <div class="form-group pr-3">
+              <%= f.label :price, "毎月積立額" %>
+              <%= f.number_field :price, class: "form-control form_textfield js-form_text-field_investment  form-price" %>
+            </div>
+            <div class="form-group pr-3">
+              <%= f.label :yield, "期待利回り" %>
+              <%= f.number_field :yield, class: "form-control form_textfield js-form_text-field_investment form-yield" %>
+              <%= f.label "％" %>
+            </div>
+            <div class="form-group pr-3">
+              <%= f.label :year, "積立期間" %>
+              <%= f.number_field :year, class: "form-control form_textfield js-form_text-field_investment form-year" %>
+              <%= f.label "年 " %>
+              <%= f.number_field :month, class: "form-control form_textfield js-form_text-field_investment form-month" %>
+              <%= f.label "ヶ月" %>
+            </div>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+              <%= f.submit "明細追加", class: "btn btn-muted form_submit js-submit" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h3 class="card-title ">投資一覧/合計</h3>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr class="text-right">
+                    <th>銘柄</th>
+                    <th>毎月積立額</th>
+                    <th>期待利回り</th>
+                    <th>投資期間</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%= render @investments %>
+                </tbody>
+              </table>
+            </div>
+            <!-- 投資金額合計 表示エリア -->
+            <div class="investment-summary">
+              <h3 class="text-right">投資金額(/月)：￥<%= number_with_delimiter(@investments.sum { |hash| hash[:price]}) %></h3>
+              <h3 class="text-right">毎月の貯金額：￥<%= number_with_delimiter((@incomes.sum { |hash| hash[:income_amount]}) - (@outgoes.sum { |hash| hash[:reasonable_payment]}) - (@investments.sum { |hash| hash[:price]})) %></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

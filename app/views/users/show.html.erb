@@ -1,0 +1,8 @@
+<div class="main">
+  <div class="container">
+    <h3><%= current_user.name + "さんの毎月の収支を整理しよう。" %></h3>
+  </div>
+  <%= render 'incomes/index', income: @income %>
+  <%= render 'outgoes/index', outgo: @outgo %>
+  <%= render 'investments/index', investment: @investment %>
+</div>

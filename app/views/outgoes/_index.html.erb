@@ -1,0 +1,66 @@
+<div class="outgo-contents">
+  <div class="container bg-light mt-3">
+    <div class="row pt-3">
+      <!-- 支出入力エリア -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header card-header-warning">
+            <h3 class="card-title">支出</h3>
+            <p class="card-category">毎月の支出を洗い出してみよう</p>
+          </div>
+          <div class="card-body">
+            <%= form_for outgo, url: outgoes_path, html: {class: 'form js-form'} do |f| %>
+            <div class="form-group">
+              <%= f.label :item, "支払項目" %>
+              <%= f.text_field :item, class: "form-control form_textfield js-form_text-field" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :outgo_payment, "支払金額(/月)" %>
+              <%= f.number_field :outgo_payment, class: "form-control form_textfield js-form_text-field" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :reasonable_payment, "見直金額(/月)" %>
+              <%= f.number_field :reasonable_payment, class: "form-control form_textfield js-form_text-field" %>
+            </div>
+              <%= f.hidden_field :user_id, :value => current_user.id %>
+              <%= f.submit "明細追加", class: "btn btn-muted form_submit js-submit" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <!-- 支出一覧表示エリア -->
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-warning">
+            <h3 class="card-title">支出一覧/合計</h3>
+          </div>
+          <div class="card-body">
+            <!-- 支出一覧 -->
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-right">支出項目</th>
+                    <th class="text-right">支出金額</th>
+                    <th class="text-right">見直金額</th>
+                    <th class="text-right">差額</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%= render @outgoes %>
+                </tbody>
+              </table>
+            </div>
+            <!-- 支出金額合計 -->
+            <div class="outgo-summary">
+              <h3 class="text-right">支出金額(/月)：￥<%= number_with_delimiter(@outgoes.sum { |hash| hash[:reasonable_payment]}) %></h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

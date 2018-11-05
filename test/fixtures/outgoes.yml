@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  item: MyString
+  outgo_payment: 1
+  reasonable_payment: 1
+  user: one
+
+two:
+  item: MyString
+  outgo_payment: 1
+  reasonable_payment: 1
+  user: two

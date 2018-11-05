@@ -1,6 +1,7 @@
 <header>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top navbar-fixed-top navbar-transparent">
-  <div class="container">
+<div class="bg-white">
+<nav class="navbar navbar-light navbar-expand-md sticky-top navbar-fixed-top navbar-transparent">
+  <div class="container container-fluid">
     <!-- ブランド -->
     <%= link_to "MeLight", root_path, class: "navbar-brand" %>
     <!-- 切り替えボタン -->
@@ -14,7 +15,7 @@
       <ul class="navbar-nav mr-auto">
         <% if logged_in? %>
           <li class="nav-item">
-            <%= link_to "シミュレーションする", "#", class: "nav-link" %><span class="sr-only">(current)</span>
+            <%= link_to "シミュレーションする", user_path(current_user), class: "nav-link" %><span class="sr-only">(current)</span>
           </li>
         <% end %>
       </ul>
@@ -22,9 +23,9 @@
       <!-- ナビゲーションメニュー 右側 -->
       <ul class="navbar-nav">
         <% if logged_in? %>
-          <li class="nav-item text-white text-bold pr-4 my-auto">ログインユーザ：<%= current_user.name %></li>
+          <li class="nav-item text-bold pr-4 my-auto">ログインユーザ：<%= current_user.name %></li>
           <li class="nav-item">
-            <%= link_to "ログアウト", logout_path, method: :delete , class: "nav-link btn btn-danger" %>
+            <%= link_to "ログアウト", logout_path, method: :delete , class: "nav-link btn btn-muted text-white" %>
           </li>
         <% else %>
           <li class="nav-item pr-3">
@@ -38,4 +39,5 @@
     </div>
   </div>
 </nav>
+</div>
 </header>

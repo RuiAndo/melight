@@ -1,0 +1,7 @@
+<tr class="text-right">
+  <td class="investment"><%= investment.item %></td>
+  <td class="investment"><%= "¥" + number_with_delimiter(investment.price) %></td>
+  <td class="investment"><%= investment.yield.to_s  + "％" %></td>
+  <td class="investment"><%= investment.year.to_s + "年" + investment.month.to_s + "ヶ月" %></td>
+  <td class="investment"><%= link_to "ー", investment ,method: :delete, class: "btn btn-outline-danger rounded-circle btn-sm" %></td>
+</tr>

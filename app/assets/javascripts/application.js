@@ -17,4 +17,6 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require toastr
+//= require incomes
+//= require material-dashboard
 //= require_tree .

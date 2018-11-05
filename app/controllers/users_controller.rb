@@ -1,5 +1,15 @@
 class UsersController < ApplicationController
 
+  def show
+    @user = User.find(params[:id])
+    @income = Income.new
+    @incomes = @user.incomes.order('created_at ASC')
+    @outgo = Outgo.new
+    @outgoes = @user.outgoes.order('created_at ASC')
+    @investment = Investment.new
+    @investments = @user.investments.order('created_at ASC')
+  end
+
   def new
     @user = User.new
   end
@@ -14,6 +24,10 @@ class UsersController < ApplicationController
       flash[:error] = "登録できませんでした"
       render :new
     end
+  end
+
+  def income
+
   end
 
 
