@@ -4,24 +4,24 @@ class OutgoesController < ApplicationController
   def create
     @outgo = Outgo.new(params_outgo)
 
-    if @outgo.save
-      respond_to do |format|
-        format.html {redirect_to user_path(current_user.id)}
-        format.json {render json: @outgo}
+    respond_to do |format|
+      if @outgo.save
+        format.html { redirect_to user_path(current_user.id) }
+        format.json { render json: @outgo }
+      else
+        flash[:error] = '更新できませんでした。'
+        format.html { redirect_to user_path(current_user.id) }
+        format.json { render json: { errors: @outgo.errors.full_messages }, status: 500 }
       end
-    else
-      flash[:error] = "更新できませんでした。"
-      redirect_to user_path(current_user.id)
     end
   end
 
   def destroy
     @outgo = Outgo.find(params[:id])
     @outgo.destroy
-    flash[:success] = "明細を削除しました。"
+    flash[:success] = '明細を削除しました。'
     redirect_to user_path(current_user.id)
   end
-
 
   private
 
