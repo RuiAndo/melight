@@ -17,6 +17,8 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require toastr
-//= require incomes
+//= require users
 //= require material-dashboard
+//= require Chart.min
+//= require jquery_ujs
 //= require_tree .

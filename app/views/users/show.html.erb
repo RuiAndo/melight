@@ -5,4 +5,22 @@
   <%= render 'incomes/index', income: @income %>
   <%= render 'outgoes/index', outgo: @outgo %>
   <%= render 'investments/index', investment: @investment %>
+
+  <div class="container bg-light mt-3">
+    <% @investments.each do |inv| %>
+      <h3 class="pt-3"><%= inv.item %></h3>
+      <div class="row chart">
+        <!-- 線グラフ -->
+        <div class="col-md-8">
+          <canvas id= "myLineChart<%= inv.id.to_s %>" width="200" height="150"></canvas>
+          <script>draw_graph("myLineChart<%= inv.id.to_s %>","myBarChart<%= inv.id.to_s %>",<%= inv.id %> );</script>
+        </div>
+        <!-- 棒グラフ -->
+        <div class="col-md-4">
+          <canvas id="myBarChart<%= inv.id.to_s %>" width="50" height="70"></canvas>
+          <script>draw_graph("myLineChart<%= inv.id.to_s %>","myBarChart<%= inv.id.to_s %>",<%= inv.id %> );</script>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

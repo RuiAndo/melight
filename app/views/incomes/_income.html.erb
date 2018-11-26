@@ -1,1 +1,5 @@
-<li class="income list-unstyled"><%= income.income_amount %></li>
+<tr class="income_<%= income.id %>">
+  <td class="income text-right"><%= income.item %></td>
+  <td class="income text-right"><%= "¥" + number_with_delimiter(income.income_amount) %></td>
+  <td class="income text-right"><%= link_to "ー", income ,method: :delete, remote: true ,class: "btn btn-outline-danger rounded-circle btn-sm income-delete" %></td>
+</tr>

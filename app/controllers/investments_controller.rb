@@ -10,7 +10,6 @@ class InvestmentsController < ApplicationController
         format.json {render json: @investment}
       end
     else
-      flash[:error] = "更新できませんでした。"
       redirect_to user_path(current_user.id)
     end
 
@@ -18,9 +17,9 @@ class InvestmentsController < ApplicationController
 
   def destroy
     @investment = Investment.find(params[:id])
+    @investment.flg = 3
     @investment.destroy
-    flash[:success] = "明細を削除しました。"
-    redirect_to user_path(current_user.id)
+    render json: @investment.to_json(methods: :flg)
   end
 
   private

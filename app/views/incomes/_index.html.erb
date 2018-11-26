@@ -10,14 +10,21 @@
             <p class="card-category">毎月の収入を整理しよう</p>
           </div>
           <div class="card-body">
-            <%= form_for income, html: {class: 'form js-form'} do |f| %>
-            <div class="form-group pr-3">
-              <%= f.label :income_amount, "月額収入：" %>
-              <%= f.number_field :income_amount, class: "form-control form_textfield js-form_text-field" %>
+            <%= form_for income, html: {class: 'form js_form'} do |f| %>
+            <div class="form-group">
+              <%= f.label :item, "収入項目" %>
+              <%= f.text_field :item, class: "form-control form_textfield js-form_text-field", id: "income-item" %>
             </div>
-              <%= f.hidden_field :user_id, :value => current_user.id %>
-              <%= f.submit "登録", class: "btn btn-muted form_submit js-submit" %>
+            <div class="form-group">
+              <%= f.label :income_amount, "収入金額：" %>
+              <%= f.number_field :income_amount, class: "form-control form_textfield js-form_text-field", id: "income-price" %>
+            </div>
+              <%= f.hidden_field :user_id, :value => current_user.id ,id: "income-userid" %>
+              <%= f.submit "登録", class: "btn btn-muted form_submit_income js-submit" %>
             <% end %>
+            <ul class="incomes">
+
+            </ul>
           </div>
         </div>
       </div>
@@ -29,7 +36,25 @@
             <h3 class="card-title">収入一覧/合計</h3>
           </div>
           <div class="card-body">
-            <h3 class="text-right">収入合計金額：￥<%= number_with_delimiter(@incomes.sum { |hash| hash[:income_amount]}) %></h3>
+            <!-- 収入一覧 -->
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th class="text-right">収入項目</th>
+                    <th class="text-right">収入金額</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="incomes">
+                  <%= render @incomes %>
+                    <!-- ※ Ajaxの更新値が挿入される -->
+                </tbody>
+              </table>
+            </div>
+            <div class="income-summary">
+              <h3 class="text-right">収入計(/月)：￥<span id="income-total"><%= number_with_delimiter(@incomes.sum { |hash| hash[:income_amount]}) %></span></h3>
+            </div>
           </div>
         </div>
       </div>

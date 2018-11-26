@@ -1,7 +1,8 @@
-<tr>
+
+<tr class="outgo_<%= outgo.id %>">
   <td class="outgo text-right"><%= outgo.item %></td>
   <td class="outgo text-right"><%= "¥" + number_with_delimiter(outgo.outgo_payment) %></td>
   <td class="outgo text-right"><%= "¥" + number_with_delimiter(outgo.reasonable_payment) %></td>
   <td class="outgo text-primary text-right"><%= "¥" + number_with_delimiter(outgo.outgo_payment - outgo.reasonable_payment) %></td>
-  <td class="outgo text-right"><%= link_to "ー", outgo ,method: :delete, class: "btn btn-outline-danger rounded-circle btn-sm" %></td>
+  <td class="outgo text-right"><%= link_to "ー", outgo ,method: :delete, remote: true,class: "btn btn-outline-danger rounded-circle btn-sm" %></td>
 </tr>

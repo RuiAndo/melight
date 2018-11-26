@@ -1,4 +1,5 @@
 class Outgo < ApplicationRecord
+  attr_accessor :flg
   belongs_to :user
 
   validates :item, presence: true
