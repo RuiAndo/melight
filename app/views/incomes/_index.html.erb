@@ -16,7 +16,7 @@
               <%= f.text_field :item, class: "form-control form_textfield js-form_text-field", id: "income-item" %>
             </div>
             <div class="form-group">
-              <%= f.label :income_amount, "収入金額：" %>
+              <%= f.label :income_amount, "収入金額" %>
               <%= f.number_field :income_amount, class: "form-control form_textfield js-form_text-field", id: "income-price" %>
             </div>
               <%= f.hidden_field :user_id, :value => current_user.id ,id: "income-userid" %>

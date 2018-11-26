@@ -56,8 +56,9 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      session[:user_id] = @user.id
       flash[:success] = "登録完了しました！"
-      redirect_to :root
+      redirect_to user_path(@user)
     else
       flash[:error] = "登録できませんでした"
       render :new

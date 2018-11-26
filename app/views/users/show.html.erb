@@ -7,18 +7,28 @@
   <%= render 'investments/index', investment: @investment %>
 
   <div class="container bg-light mt-3">
+    <h3 class="pt-3">積立複利シミュレーション</h3>
+    <p>※ページを更新すると、グラフが更新されます</p>
     <% @investments.each do |inv| %>
-      <h3 class="pt-3"><%= inv.item %></h3>
-      <div class="row chart">
-        <!-- 線グラフ -->
-        <div class="col-md-8">
-          <canvas id= "myLineChart<%= inv.id.to_s %>" width="200" height="150"></canvas>
-          <script>draw_graph("myLineChart<%= inv.id.to_s %>","myBarChart<%= inv.id.to_s %>",<%= inv.id %> );</script>
+      <div class="card pt-3">
+        <div class="card-header card-header-info">
+          <h4 class="card-title"><%= inv.item %></h4>
         </div>
-        <!-- 棒グラフ -->
-        <div class="col-md-4">
-          <canvas id="myBarChart<%= inv.id.to_s %>" width="50" height="70"></canvas>
-          <script>draw_graph("myLineChart<%= inv.id.to_s %>","myBarChart<%= inv.id.to_s %>",<%= inv.id %> );</script>
+        <div class="card-body">
+          <div class="row chart pt-2">
+            <!-- 線グラフ -->
+            <div class="col-md-8">
+              <p class="text-center">積立年数と金額の推移</p>
+              <canvas id= "myLineChart<%= inv.id.to_s %>" width="200" height="150"></canvas>
+              <script>draw_graph("myLineChart<%= inv.id.to_s %>","myBarChart<%= inv.id.to_s %>",<%= inv.id %> );</script>
+            </div>
+            <!-- 棒グラフ -->
+            <div class="col-md-4">
+              <p class="text-center">投資元本と運用収益</p>
+              <canvas id="myBarChart<%= inv.id.to_s %>" width="50" height="70"></canvas>
+              <script>draw_graph("myLineChart<%= inv.id.to_s %>","myBarChart<%= inv.id.to_s %>",<%= inv.id %> );</script>
+            </div>
+          </div>
         </div>
       </div>
     <% end %>

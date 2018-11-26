@@ -103,7 +103,7 @@ $(function() {
     })
 
     .fail(function() {
-      alert('error')
+      alert('入力項目を見直してください')
     });
 
   });
@@ -228,7 +228,7 @@ $(function() {
     })
 
     .fail(function() {
-      alert('error')
+      alert('入力項目を見直してください')
     });
 
   });
@@ -305,8 +305,7 @@ $(function() {
           yield: inv_yield,
           year: inv_year,
           month: inv_month,
-          user_id: userid,
-          flg: 3
+          user_id: userid
         }
       },
       dataType: 'json',
@@ -348,7 +347,7 @@ $(function() {
     })
 
     .fail(function() {
-      alert('error')
+      alert('入力項目を見直してください')
     });
 
   });
