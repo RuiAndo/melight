@@ -10,5 +10,11 @@ class ApplicationController < ActionController::Base
       redirect_to :root
     end
   end
-  
+
+  def check_user
+    if current_user.id != params[:id].to_i
+      redirect_to :root
+    end
+  end
+
 end

@@ -1,44 +1,69 @@
 <!-- メインビジュアル -->
 <div class="main-visual-area">
-  <div class="jumbotron jumbotron-fluid text-center text-white" style="background: url(<%= asset_path "main.jpg" %>) center; background-size:cover;">
-    <div class="container">
-      <h1 class="display-3">明るい未来のために</h1>
-      <p class="lead">毎月の収支を整理して、未来への投資金額をシミュレーションするサービスです</p>
-      <%= link_to "アカウント作成", new_user_path, class: "btn btn-muted" %>
+  <div class="py-5 text-center align-items-center d-flex" style="background-image: linear-gradient(to bottom, #ffffff, #a0d8ef); background-size: 100%;">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <!-- <i class="d-block fa fa-stop-circle mb-3 text-muted fa-5x"></i> -->
+          <h1 class="display-3 mb-4 pt-5">明るい未来のために</h1>
+          <p class="lead mb-5">毎月の収支を整理して、未来への投資金額をシミュレーションするサービスです</p>
+          <div class="py-5">
+            <%= link_to "アカウント作成", new_user_path, class: "btn btn-success" %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- サービス紹介 -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 text-center">
-          <h2>毎月の収支を整理しよう</h2>
-        </div>
-      </div>
-      <div class="row justify-content-center text-center">
-        <div class="col-md-4 p-4"><span class="fa-stack fa-5x"><i class="d-block fa fa-circle-thin mb-2 text-muted fa-stack-2x"></i><i class="d-block fa fa-jpy mb-2 text-muted fa-stack-1x"></i></span>
-          <h3>収入</h3>
-          <p>毎月の収入を一覧形式で整理することができます。本業収入のほか副業や家賃収入・配当収入など、まずは毎月定期的に入ってくる金額を整理しましょう。</p>
-        </div>
-        <div class="col-md-4 col-6 p-4"><span class="fa-stack fa-5x"><i class="d-block fa fa-circle-thin mb-2 text-muted fa-stack-2x"></i><i class="d-block fa fa-credit-card mb-2 text-muted fa-stack-1x"></i></span>
-          <h3>支出</h3>
-          <p>毎月の支出を一覧形式で整理することができます。毎月固定費として出ていく金額や、食費・光熱水費などの変動費も含め、支出明細を整理しましょう。</p>
-        </div>
-        <div class="col-md-4 col-6 p-4"><span class="fa-stack fa-5x"><i class="d-block fa fa-circle-thin mb-2 text-muted fa-stack-2x"></i><i class="d-block fa fa-line-chart mb-2 text-muted fa-stack-1x"></i></span>
-          <h3>投資</h3>
-          <p>毎月の投資積立をグラフでシミュレーションすることができます。満額貯金するのではなく、低リスクな定額積立投資を始めましょう。</p>
-        </div>
+<div class="service-area pt-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>毎月の収支を整理しよう</h2>
       </div>
     </div>
+    <div class="row justify-content-center text-center">
+      <div class="income col-md-4 p-4">
+        <span class="fa-stack fa-5x">
+          <i class=" fa fa-circle-thin mb-2 fa-stack-2x"></i>
+          <i class="d-block fa fa-jpy mb-2 fa-stack-1x"></i>
+        </span>
+        <h3 class="font-weight-bold">収入</h3>
+        <p>毎月の収入を一覧形式で整理することができます。本業収入のほか副業や家賃収入・配当収入など、まずは毎月定期的に入ってくる金額を整理しましょう。</p>
+      </div>
+      <div class="outgo col-md-4 col-6 p-4">
+        <span class="fa-stack fa-5x">
+          <i class="d-block fa fa-circle-thin mb-2 fa-stack-2x"></i>
+          <i class="d-block fa fa-credit-card mb-2 fa-stack-1x"></i>
+        </span>
+          <h3 class="font-weight-bold">支出</h3>
+          <p>毎月の支出を一覧形式で整理することができます。毎月固定費として出ていく金額や、食費・光熱水費などの変動費も含め、支出明細を整理しましょう。</p>
+        </div>
+      <div class="investment col-md-4 col-6 p-4">
+        <span class="fa-stack fa-5x">
+          <i class="d-block fa fa-circle-thin mb-2 fa-stack-2x"></i>
+          <i class="d-block fa fa-line-chart mb-2 fa-stack-1x"></i>
+        </span>
+        <h3 class="font-weight-bold">投資</h3>
+        <p>毎月の投資積立をグラフでシミュレーションすることができます。満額貯金するのではなく、低リスクな定額積立投資を始めましょう。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- 収入整理 -->
-  <div class="py-4 bg-light">
+<div class="income-area">
+  <div class="py-5" style="background-image: linear-gradient(to right, #ffffff, #66bb6a); background-size: 100%;">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 order-2 order-lg-1 p-0"> <img class="img-fluid d-block" src="https://static.pingendo.com/cover-moon.svg"> </div>
+        <div class="col-lg-6 order-2 order-lg-1 p-0">
+          <%= image_tag('income.png') %>
+        </div>
         <div class="px-5 col-lg-6 d-flex flex-column align-items-start justify-content-center order-1 order-lg-2">
-          <h1>収入を整理</h1>
+          <h2 class="font-weight-bold">収入を整理</h2>
           <p class="mb-3">まずは、すべての元となる収入金額を整理します。<br>
                           現時点での収入源を洗い出してください。<br>
                           例）本業収入・副業収入・家賃収入・配当収入…etc</p>
@@ -46,46 +71,60 @@
       </div>
     </div>
   </div>
+</div>
 
-  <!-- 支出整理 -->
-    <div class="py-4 bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="px-5 col-lg-6 d-flex flex-column align-items-start justify-content-center order-1 order-lg-1">
-            <h1>支出を整理</h1>
-            <p class="mb-3">自由に使えるお金を増やすために、支出を見直しましょう。<br>
-                            本当に必要な支出か、無駄な支出がないか整理しましょう。<br>
-                            例）家賃・携帯電話・ジム・保険・飲み会代…etc</p>
-          </div>
-          <div class="col-lg-6 order-2 order-lg-2 p-0"> <img class="img-fluid d-block" src="https://static.pingendo.com/cover-moon.svg"> </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 投資 -->
-      <div class="py-4 bg-light">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-6 order-2 order-lg-1 p-0"> <img class="img-fluid d-block" src="https://static.pingendo.com/cover-moon.svg"> </div>
-            <div class="px-5 col-lg-6 d-flex flex-column align-items-start justify-content-center order-1 order-lg-2">
-              <h1>積立投資シミュレーション</h1>
-              <p class="mb-3">まずは、すべての元となる収入金額を整理します。<br>
-                              現時点での収入源を洗い出してください。<br>
-                              例）本業収入・副業収入・家賃収入・配当収入…etc</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-<!-- 訴求 -->
-  <div class="py-5 text-center" >
+<!-- 支出整理 -->
+<div class="outgo-area">
+  <div class="py-5" style="background-image: linear-gradient(to left, #ffffff, #ffa726); background-size: 100%;">
     <div class="container">
       <div class="row">
-        <div class="col-md-12">
-          <h1 class="mb-3">さあ、投資を始めよう</h1>
-          <p>銀行に置いておくだけでは、お金は増えません。収入を増やし無駄な支出を減らして、投資元本を捻出しましょう。<br>
-             複利と時間の力で、知らない間に資産が形成されていきます。大切な人との明るい未来をコツコツ作っていきましょう。</p>
+        <div class="px-5 col-lg-6 d-flex flex-column align-items-start justify-content-center order-1 order-lg-1">
+          <h2 class="font-weight-bold">支出を整理</h2>
+          <p class="mb-3">自由に使えるお金を増やすために、支出を見直しましょう。<br>
+                          本当に必要な支出か、無駄な支出がないか整理しましょう。<br>
+                          例）家賃・携帯電話・ジム・保険・飲み会代…etc</p>
+        </div>
+        <div class="col-lg-6 order-2 order-lg-2 p-0">
+          <%= image_tag('outgo.png') %>
         </div>
       </div>
     </div>
   </div>
+</div>
+
+<!-- 投資 -->
+<div class="investment-area">
+  <div class="py-5" style="background-image: linear-gradient(to right, #ffffff, #ad63ba); background-size: 100%;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 order-2 order-lg-1 p-0">
+          <%= image_tag('investment.png') %>
+        </div>
+        <div class="px-5 col-lg-6 d-flex flex-column align-items-start justify-content-center order-1 order-lg-2">
+          <h2 class="font-weight-bold">積立投資シミュレーション</h2>
+          <p class="mb-3">余った金額から投資に回す金額を整理しましょう。<br>
+                          毎月定額の積立投資のシミュレーションができます。<br>
+                          積立投資の推移をグラフで確認できます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 訴求 -->
+<div class="py-5 bg-light">
+  <div class="py-5 text-center bg-light" >
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="mb-3">さあ、投資を始めよう</h2>
+          <p>銀行に置いておくだけでは、お金は増えません。収入を増やし無駄な支出を減らして、投資元本を捻出しましょう。<br>
+             複利と時間の力で、知らない間に資産が形成されていきます。大切な人との明るい未来をコツコツ作っていきましょう。</p>
+          <div class="py-1">
+            <%= link_to "アカウント作成", new_user_path, class: "btn btn-success" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
